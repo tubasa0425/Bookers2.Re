@@ -1,12 +1,99 @@
+本詳細c
+画像のした
+名前リンク先→ユーザー詳細
+
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
 
+<div style="margin-top: 50px;">
 
-<h2>Title</h2>
-<p><%= @book.title %></p>
-<h2>Body</h2>
-<p><%= @book.body %></p>
-<%= link_to "Edit", edit_book_path(@book.id) %>
-<a href="/books">Back</a>
-<%= link_to "Destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<div class="container">
+<div class="row">
+
+<div class="col-xs-3">
+
+<h1>User info</h1>
+<!--User image-->
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg' %>
+<!---->
+<table class="table">
+<tbody><tr></tr>
+<tr>
+<th>name</th>
+<th><%= @user.name %></th>
+</tr>
+<tr>
+<th>introduction</th>
+<th><%= @user.introduction %></th>
+</tr>
+<tr>
+<th>
+<%= link_to edit_user_path(@user) do %>
+<span class=" btn btn-default glyphicon glyphicon-wrench edit_user_24870"></span>
+<% end %>
+</th>
+</tr>
+</tbody>
+</table>
+
+<h2>New book</h2>
+<%= form_with model: @book, url:'/books', local:true, scope: :book do |f| %>
+<h4>Title</h4>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_area :body %>
+<br>
+<%= f.submit 'Create Book' %>
+</br>
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+</div>
+
+
+<div class="col-xs-9">
+<h2>Book detail</h2>
+
+<table class="table table-hover table-inverse">
+<thead>
+<thead>
+<tr>
+<th></th>
+<th>Title</th>
+<th>Opinion</th>
+<th colspan="3"></th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg' %>
+
+</td>
+<td>
+<%= @book.title %>
+</td>
+<td>
+<%= @book.body %>
+</td>
+<td>
+  <% if @book.user == current_user %>
+　 <%= link_to "Edit", edit_book_path(@book.id) %>
+
+   <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</td>
+</tbody>
+</table>
+
+
+
+
+
+<% end %>
+</div>
+</div>
+</div>
+

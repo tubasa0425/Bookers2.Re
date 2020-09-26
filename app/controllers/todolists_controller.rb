@@ -1,4 +1,7 @@
 class TodolistsController < ApplicationController
+  
+  before_action :authenticate_user!
+  
   def new
     @book = Book.new
   end

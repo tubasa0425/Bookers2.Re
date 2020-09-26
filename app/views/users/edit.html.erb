@@ -1,0 +1,50 @@
+User edit
+
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+
+
+
+
+<h2>User info</h2>
+
+
+
+<!--名前　編集-->
+ <%= form_with model:@user, local:true do |f| %>
+ <div class="field">
+    <label for="user_name">Name</label>
+    <%= f.text_field :name %>
+  </div>
+
+
+
+
+
+    <div class="form-group has-icon">
+    <div class="user-edit-image">
+    </div>
+    <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
+     <label for="user_name">Image</label>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+  </div>
+
+
+   <!--自己紹介-->
+   
+  
+  <div class="field">
+    <label for="user_introduction">Introduction</label>
+    <%= f.text_area :introduction %>
+  </div>
+  <%= f.submit "Update User" %>
+<% end %>
+
+
+
+
+
+

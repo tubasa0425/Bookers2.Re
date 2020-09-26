@@ -1,0 +1,2 @@
+module ProfileImageIdHelper
+end
