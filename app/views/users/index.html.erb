@@ -1,4 +1,3 @@
-ユーザー詳細
 
 <div style="margin-top: 50px;">
 
@@ -70,7 +69,7 @@
 <tr>
 <td>
 
-<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.png" %>
+<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.png" %>
 </td>
 <td>
 <%= user.name %>

@@ -1,8 +1,5 @@
 <div style="margin-top: 50px;">
 
-books一覧
-
-
 <div style="margin-top: 50px;">
  
  
@@ -76,12 +73,21 @@ books一覧
 <% @books.each do |book| %>
 <tr> 
 <td>
+<!--%= link_to user_path(book.user) do %>-->
 <%= link_to user_path(book.user) do %>
 <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.png" %>
 <% end %>
 </td>
 <td>
-<%= link_to book.title, book_path(book.id) %>
+<%=link_to book.title, book_path(book.id)%>
+<!--%= link_to book.title,book, class: "book_#{book.id}" %>-->
+
+<!--%= link_to book.title, book_path(book.id) %>-->
+
+<!--%= link_to book:id do  %>
+%= book.title %>
+% end %>-->
+
 </td>
 <td>
 <%= book.body %>
@@ -89,10 +95,10 @@ books一覧
 <td>
   
 
-<%= link_to "Show", book_path(book.id) %>
+<!--%= link_to "Show", book_path(book.id) %>-->
 
 
-<%= link_to "Edit", edit_book_path(book.id) %>
+<!--%= link_to "Edit", edit_book_path(book.id) %>-->
 
 </td>
 </tr>  
